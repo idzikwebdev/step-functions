@@ -7,10 +7,12 @@ pipeline {
     stages {
         stage("init") {
             steps {
+            echo 'Init'
             }
         }
         stage("build") {
             steps {
+            echo 'Build'
             }
         }
         stage("test") {
@@ -20,10 +22,12 @@ pipeline {
                 }
             }
             steps {
+            echo 'Test'
             }
         }
         stage("deploy") {
             steps {
+            echo 'Deploy'
             }
         }
     }   
