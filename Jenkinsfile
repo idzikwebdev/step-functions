@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+    terraform 'terraform'
+    }
     parameters {
         choice(name: 'TERRAFORM_VERSION', choices: ['0.13.7', '0.14.7'], description: 'choose terraform version')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
