@@ -14,8 +14,8 @@ pipeline {
             steps {
             echo 'Build'
             sh '''
-            sudo apt-get update -any
-            sudo apt-get install rsync -anyrsync --version
+            apt-get update -any
+            apt-get install rsync -anyrsync --version
             git clone https://github.com/tfutils/tfenv.git ~/tfenv
             ~/tfenv/bin/tfenv install ${TERRAFORM_VERSION}
             ~/tfenv/bin/tfenv use ${TERRAFORM_VERSION}
