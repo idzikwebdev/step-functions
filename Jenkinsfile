@@ -18,11 +18,12 @@ pipeline {
         stage("build") {
             when {
                 expression {
-                    BRANCH_NAME == 'master' || CODE_CHANGES == true
+                    BRANCH_NAME == 'master'
+//                     || CODE_CHANGES == true
                 }
             }
             steps {
-                echo "Building app ${NEW_VERSION}"
+                echo "Building app ${VERSION}"
             }
         }
         stage("test") {
@@ -43,24 +44,24 @@ pipeline {
             }
              steps {
              echo 'Deploying app'
-             withCredentials([usernamePassword(credentials: 'github',usernameVariable:USER, passwordVariable:PASSWORD)]){
-                 sh "Credentials"
-                 echo "${USER} and ${PASSWORD}"
-                 echo "Version ${params.VERSION}"
-                 }
-             echo "${SERVER_CREDENTIALS}"
+//              withCredentials([usernamePassword(credentials: 'github',usernameVariable:USER, passwordVariable:PASSWORD)]){
+//                  sh "Credentials"
+//                  echo "${USER} and ${PASSWORD}"
+//                  echo "Version ${params.VERSION}"
+//                  }
+//              echo "${SERVER_CREDENTIALS}"
              }
         }
     }
-    post {
-        always {
-        echo 'Always'
-        }
-        success {
-        echo 'Success'
-        }
-        failure {
-        echo 'Failure'
-        }
-    }
+//     post {
+//         always {
+//         echo 'Always'
+//         }
+//         success {
+//         echo 'Success'
+//         }
+//         failure {
+//         echo 'Failure'
+//         }
+//     }
 }
