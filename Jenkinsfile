@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        choice(name: 'TERRAFORM_VERSION', choices: ['0.13.7', '0.14.7'], description: 'choose terraform version')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     stages {
@@ -13,6 +13,13 @@ pipeline {
         stage("build") {
             steps {
             echo 'Build'
+            sh '''
+            sudo apt-get update -any
+            sudo apt-get install rsync -anyrsync --version
+            git clone https://github.com/tfutils/tfenv.git ~/tfenv
+            ~/tfenv/bin/tfenv install ${TERRAFORM_VERSION}
+            ~/tfenv/bin/tfenv use ${TERRAFORM_VERSION}
+            '''
             }
         }
         stage("test") {
@@ -23,6 +30,8 @@ pipeline {
             }
             steps {
             echo 'Test'
+            chmod a+x gradlew
+            ./gradlew clean build
             }
         }
         stage("deploy") {
