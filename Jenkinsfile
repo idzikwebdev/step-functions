@@ -2,9 +2,9 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'VERSION', defaultValue:'', description: 'version to deploy')
-//         choice(name: 'VER', choices ['1.0', '1.1'], description: 'choose')
-//         booleanParam(name:'executeTests', defaultValue: true, description:'')
+//         string(name: 'VERSION', defaultValue:'', description: 'version to deploy')
+        choice(name: 'VERSION', choices ['1.0', '1.1'], description: 'choose')
+        booleanParam(name:'executeTests', defaultValue: true, description:'')
     }
 //     tools {
         // tools available gradle, maven and jdk, you dont need to write it
