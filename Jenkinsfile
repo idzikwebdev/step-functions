@@ -14,11 +14,7 @@ pipeline {
             steps {
             echo 'Build'
             sh '''
-            sudo apt-get update -any
-            sudo apt-get install rsync -anyrsync --version
-            git clone https://github.com/tfutils/tfenv.git ~/tfenv
-            ~/tfenv/bin/tfenv install ${TERRAFORM_VERSION}
-            ~/tfenv/bin/tfenv use ${TERRAFORM_VERSION}
+            terraform init
             '''
             }
         }
@@ -31,7 +27,6 @@ pipeline {
             steps {
             echo 'Test'
             sh '''
-            chmod a+x gradlew
             ./gradlew clean build
             '''
             }
