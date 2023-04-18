@@ -9,7 +9,7 @@ pipeline {
             steps {
             echo 'Init'
             }
-        }
+       }
         stage("build") {
             steps {
             echo 'Build'
@@ -30,8 +30,10 @@ pipeline {
             }
             steps {
             echo 'Test'
+            sh '''
             chmod a+x gradlew
             ./gradlew clean build
+            '''
             }
         }
         stage("deploy") {
@@ -40,3 +42,4 @@ pipeline {
             }
         }
     }
+ }
