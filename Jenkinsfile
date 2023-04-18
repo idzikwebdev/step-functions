@@ -46,6 +46,7 @@ pipeline {
              withCredentials([usernamePassword(credentials: 'github',usernameVariable:USER, passwordVariable:PASSWORD)]){
                  sh "Credentials"
                  echo "${USER} and ${PASSWORD}"
+                 echo "Version ${params.VERSION}"
                  }
              echo "${SERVER_CREDENTIALS}"
              }
