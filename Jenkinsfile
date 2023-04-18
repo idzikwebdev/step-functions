@@ -3,13 +3,13 @@ pipeline {
     agent any
     parameters {
         string(name: 'VERSION', defaultValue:'', description: 'version to deploy')
-        choice(name: 'VER', choices ['1.0', '1.1'], description: 'choose')
-        booleanParam(name:'executeTests', defaultValue: true, description:'')
+//         choice(name: 'VER', choices ['1.0', '1.1'], description: 'choose')
+//         booleanParam(name:'executeTests', defaultValue: true, description:'')
     }
-    tools {
+//     tools {
         // tools available gradle, maven and jdk, you dont need to write it
 //         mvn 'Maven'
-    }
+//     }
     environment {
         NEW_VERSION = '1.3.0'
         SERVER_CREDENTIALS = credentials('')
