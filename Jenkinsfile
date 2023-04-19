@@ -17,6 +17,8 @@ pipeline {
             steps {
             echo 'Build'
             sh '''
+            git clone https://github.com/idzikwebdev/step-functions.git
+            cd terraform
             terraform init
             '''
             }
